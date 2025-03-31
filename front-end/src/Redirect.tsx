@@ -13,7 +13,7 @@ function Redirect() {
       const url = data.urlShorteners.find((u) => u.shortUrl === shorten)?.originalUrl;
       if (url) {
         const timer = setTimeout(() => {
-          navigate(url);
+          navigate(window.location.href = url);
         }, 5000);
 
         const interval = setInterval(() => {
