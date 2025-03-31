@@ -15,7 +15,9 @@ export class UrlShortenerResolver {
   urlShortener(
     @Args('originalUrl', { type: () => String }) originalUrl: string,
     @Args('shortUrl', { type: () => String }) shortUrl: string,
+    @Args('numberOfClicks', { type: () => Number, nullable: true })
+    numberOfClicks = 0,
   ) {
-    return this.urlShortenerService.save(originalUrl, shortUrl);
+    return this.urlShortenerService.save(originalUrl, shortUrl, numberOfClicks);
   }
 }

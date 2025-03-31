@@ -10,8 +10,16 @@ export class UrlShortenerService {
     private urlShortenerRepository: Repository<UrlShortener>,
   ) {}
 
-  save(originalUrl: string, shortUrl: string) {
-    return this.urlShortenerRepository.save({ originalUrl, shortUrl });
+  save(
+    originalUrl: string,
+    shortUrl: string,
+    numberOfClicks = 0,
+  ): Promise<UrlShortener> {
+    return this.urlShortenerRepository.save({
+      originalUrl,
+      shortUrl,
+      numberOfClicks,
+    });
   }
 
   findAll(): Promise<UrlShortener[]> {

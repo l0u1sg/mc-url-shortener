@@ -10,4 +10,7 @@ export class UrlShortener {
 
   @Column({ unique: true })
   shortUrl: string;
+
+  @Column({ default: 0 })
+  numberOfClicks: number;
 }

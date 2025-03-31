@@ -10,4 +10,7 @@ export class UrlShortenerDto {
 
   @Field()
   shortUrl: string;
+
+  @Field((_type) => Int, { nullable: true })
+  numberOfClicks?: number;
 }

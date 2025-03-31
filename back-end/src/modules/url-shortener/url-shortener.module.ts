@@ -8,4 +8,4 @@ import { UrlShortenerResolver } from './url-shortener.resolver';
   imports: [TypeOrmModule.forFeature([UrlShortener])],
   providers: [UrlShortenerService, UrlShortenerResolver],
 })
-export class UrlShortenerModule{}
+export class UrlShortenerModule {}
