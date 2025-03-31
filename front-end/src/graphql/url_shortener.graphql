@@ -1,0 +1,15 @@
+query getUrls {
+    urlShorteners {
+        id
+        originalUrl
+        shortUrl
+    }
+}
+
+mutation addUrl($originalUrl: String!, $shorten: String!) {
+    urlShortener(originalUrl: $originalUrl, shortUrl: $shorten) {
+        id
+        originalUrl
+        shortUrl
+    }
+}

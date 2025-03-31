@@ -21,6 +21,7 @@ export type MessageDto = {
 export type Mutation = {
   __typename?: 'Mutation';
   message: MessageDto;
+  urlShortener: UrlShortenerDto;
 };
 
 
@@ -28,7 +29,21 @@ export type MutationMessageArgs = {
   message: Scalars['String'];
 };
 
+
+export type MutationUrlShortenerArgs = {
+  originalUrl: Scalars['String'];
+  shortUrl: Scalars['String'];
+};
+
 export type Query = {
   __typename?: 'Query';
   messages: Array<MessageDto>;
+  urlShorteners: Array<UrlShortenerDto>;
+};
+
+export type UrlShortenerDto = {
+  __typename?: 'UrlShortenerDto';
+  id?: Maybe<Scalars['Int']>;
+  originalUrl: Scalars['String'];
+  shortUrl: Scalars['String'];
 };

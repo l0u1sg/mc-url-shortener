@@ -1,4 +1,4 @@
-# This file was generated based on ".graphqlconfig". Do not edit manually.
+# This file was generated. Do not edit manually.
 
 schema {
     query: Query
@@ -12,8 +12,16 @@ type MessageDto {
 
 type Mutation {
     message(message: String!): MessageDto!
+    urlShortener(originalUrl: String!, shortUrl: String!): UrlShortenerDto!
 }
 
 type Query {
     messages: [MessageDto!]!
+    urlShorteners: [UrlShortenerDto!]!
+}
+
+type UrlShortenerDto {
+    id: Int
+    originalUrl: String!
+    shortUrl: String!
 }
