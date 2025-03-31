@@ -23,7 +23,7 @@ function HomePage() {
           },
         });
         setNewUrl(newUrl);
-        await refetch();
+        alert('URL ajoutée avec succès !');
       } else {
         alert('This short URL already exists. Please choose another one.');
       }
