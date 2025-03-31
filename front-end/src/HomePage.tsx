@@ -41,13 +41,6 @@ function HomePage() {
         >
           Ajouter une URL à raccourcir :
         </div>
-        {data?.urlShorteners.map((url) => (
-          <div key={url.id}>
-            <a href={`/${url.shortUrl}`} target="_blank" rel="noreferrer noopener">
-              {url.originalUrl}
-            </a>
-          </div>
-        ))}
         <div className="font-semibold">
           <form
             className="flex gap-4"
