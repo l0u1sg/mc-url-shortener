@@ -20,4 +20,12 @@ export class UrlShortenerResolver {
   ) {
     return this.urlShortenerService.save(originalUrl, shortUrl, numberOfClicks);
   }
+
+  @Mutation(() => UrlShortenerDto)
+  async incrementClickCount(
+    @Args('shortUrl', { type: () => String }) shortUrl: string,
+  ): Promise<boolean> {
+    await this.urlShortenerService.incrementClickCount(shortUrl);
+    return true;
+  }
 }

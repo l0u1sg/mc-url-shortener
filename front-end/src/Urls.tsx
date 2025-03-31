@@ -31,6 +31,9 @@ function Urls() {
               {url.shortUrl}
               {' -> '}
               {url.originalUrl}
+              {' ('}
+              {url.numberOfClicks}
+              {' clics)'}
             </a>
           </div>
         ))}

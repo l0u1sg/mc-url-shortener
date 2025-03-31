@@ -25,4 +25,14 @@ export class UrlShortenerService {
   findAll(): Promise<UrlShortener[]> {
     return this.urlShortenerRepository.find();
   }
+
+  async incrementClickCount(shortUrl: string): Promise<void> {
+    const urlShortener = await this.urlShortenerRepository.findOne({
+      where: { shortUrl },
+    });
+    if (urlShortener) {
+      urlShortener.numberOfClicks += 1;
+      await this.urlShortenerRepository.save(urlShortener);
+    }
+  }
 }

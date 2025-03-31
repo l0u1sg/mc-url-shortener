@@ -3,6 +3,7 @@ query getUrls {
         id
         originalUrl
         shortUrl
+        numberOfClicks
     }
 }
 
@@ -11,5 +12,11 @@ mutation addUrl($originalUrl: String!, $shorten: String!) {
         id
         originalUrl
         shortUrl
+    }
+}
+
+mutation IncrementClickCount($shortUrl: String!) {
+    incrementClickCount(shortUrl: $shortUrl) {
+        numberOfClicks
     }
 }

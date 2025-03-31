@@ -20,8 +20,14 @@ export type MessageDto = {
 
 export type Mutation = {
   __typename?: 'Mutation';
+  incrementClickCount: UrlShortenerDto;
   message: MessageDto;
   urlShortener: UrlShortenerDto;
+};
+
+
+export type MutationIncrementClickCountArgs = {
+  shortUrl: Scalars['String'];
 };
 
 
@@ -31,6 +37,7 @@ export type MutationMessageArgs = {
 
 
 export type MutationUrlShortenerArgs = {
+  numberOfClicks?: InputMaybe<Scalars['Float']>;
   originalUrl: Scalars['String'];
   shortUrl: Scalars['String'];
 };
@@ -44,6 +51,7 @@ export type Query = {
 export type UrlShortenerDto = {
   __typename?: 'UrlShortenerDto';
   id?: Maybe<Scalars['Int']>;
+  numberOfClicks?: Maybe<Scalars['Int']>;
   originalUrl: Scalars['String'];
   shortUrl: Scalars['String'];
 };

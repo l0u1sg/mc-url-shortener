@@ -6,7 +6,7 @@ const defaultOptions = {} as const;
 export type GetUrlsQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type GetUrlsQuery = { __typename?: 'Query', urlShorteners: Array<{ __typename?: 'UrlShortenerDto', id?: number | null, originalUrl: string, shortUrl: string }> };
+export type GetUrlsQuery = { __typename?: 'Query', urlShorteners: Array<{ __typename?: 'UrlShortenerDto', id?: number | null, originalUrl: string, shortUrl: string, numberOfClicks?: number | null }> };
 
 export type AddUrlMutationVariables = Types.Exact<{
   originalUrl: Types.Scalars['String'];
@@ -16,6 +16,13 @@ export type AddUrlMutationVariables = Types.Exact<{
 
 export type AddUrlMutation = { __typename?: 'Mutation', urlShortener: { __typename?: 'UrlShortenerDto', id?: number | null, originalUrl: string, shortUrl: string } };
 
+export type IncrementClickCountMutationVariables = Types.Exact<{
+  shortUrl: Types.Scalars['String'];
+}>;
+
+
+export type IncrementClickCountMutation = { __typename?: 'Mutation', incrementClickCount: { __typename?: 'UrlShortenerDto', numberOfClicks?: number | null } };
+
 
 export const GetUrlsDocument = gql`
     query getUrls {
@@ -23,6 +30,7 @@ export const GetUrlsDocument = gql`
     id
     originalUrl
     shortUrl
+    numberOfClicks
   }
 }
     `;
@@ -53,3 +61,17 @@ export function useAddUrlMutation(baseOptions?: Apollo.MutationHookOptions<AddUr
 export type AddUrlMutationHookResult = ReturnType<typeof useAddUrlMutation>;
 export type AddUrlMutationResult = Apollo.MutationResult<AddUrlMutation>;
 export type AddUrlMutationOptions = Apollo.BaseMutationOptions<AddUrlMutation, AddUrlMutationVariables>;
+export const IncrementClickCountDocument = gql`
+    mutation IncrementClickCount($shortUrl: String!) {
+  incrementClickCount(shortUrl: $shortUrl) {
+    numberOfClicks
+  }
+}
+    `;
+export function useIncrementClickCountMutation(baseOptions?: Apollo.MutationHookOptions<IncrementClickCountMutation, IncrementClickCountMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<IncrementClickCountMutation, IncrementClickCountMutationVariables>(IncrementClickCountDocument, options);
+      }
+export type IncrementClickCountMutationHookResult = ReturnType<typeof useIncrementClickCountMutation>;
+export type IncrementClickCountMutationResult = Apollo.MutationResult<IncrementClickCountMutation>;
+export type IncrementClickCountMutationOptions = Apollo.BaseMutationOptions<IncrementClickCountMutation, IncrementClickCountMutationVariables>;

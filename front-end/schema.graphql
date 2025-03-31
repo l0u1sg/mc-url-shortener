@@ -11,8 +11,9 @@ type MessageDto {
 }
 
 type Mutation {
+    incrementClickCount(shortUrl: String!): UrlShortenerDto!
     message(message: String!): MessageDto!
-    urlShortener(originalUrl: String!, shortUrl: String!): UrlShortenerDto!
+    urlShortener(numberOfClicks: Float, originalUrl: String!, shortUrl: String!): UrlShortenerDto!
 }
 
 type Query {
@@ -22,6 +23,7 @@ type Query {
 
 type UrlShortenerDto {
     id: Int
+    numberOfClicks: Int
     originalUrl: String!
     shortUrl: String!
 }
