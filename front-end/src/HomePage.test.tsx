@@ -1,7 +1,7 @@
 import React from 'react';
 import { MockedProvider } from '@apollo/client/testing';
 import { render, waitFor } from '@testing-library/react';
-import App from './App';
+import HomePage from './HomePage';
 import { GetMessagesDocument } from './graphql/message.generated';
 
 test('should display messages', async () => {
@@ -17,7 +17,7 @@ test('should display messages', async () => {
 
   const { getByText } = render(
     <MockedProvider mocks={[messagesMock]} addTypename={false}>
-      <App />
+      <HomePage />
     </MockedProvider>,
   );
 
