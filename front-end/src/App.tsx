@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import HomePage from './HomePage';
 import Redirect from './Redirect';
 import logo from './logo.svg';
+import Urls from './Urls';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/:shorten" element={<Redirect />} />
+        <Route path="/urls" element={<Urls />} />
       </Routes>
     </div>
   );

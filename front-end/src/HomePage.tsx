@@ -78,6 +78,15 @@ function HomePage() {
             </button>
           </form>
         </div>
+        <div className="font-semibold">
+          <a
+            href="/urls"
+            rel="noopener noreferrer"
+            className="p-3 bg-main-blue text-white rounded-full"
+          >
+            URLs raccourcies
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -41,7 +41,7 @@ function Redirect() {
           >
             Redirection vers votre super URL :
           </div>
-          <div className="font-semibold">
+          <div className="font-thin">
             {data?.urlShorteners.find((u) => u.shortUrl === shorten)?.originalUrl}
           </div>
           <div className="font-semibold">
