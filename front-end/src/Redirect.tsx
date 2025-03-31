@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useGetUrlsQuery } from './graphql/url_shortener.generated';
+import { useGetUrlsQuery, useIncrementClickCountMutation } from './graphql/url_shortener.generated';
 
 function Redirect() {
   const { shorten } = useParams<{ shorten: string} >();
   const [timeLeft, setTimeLeft] = useState(5);
   const navigate = useNavigate();
   const { data } = useGetUrlsQuery();
+  const [incrementClickCount] = useIncrementClickCountMutation();
 
   useEffect(() => {
-    if (data) {
+    if (shorten && data) {
       const url = data.urlShorteners.find((u) => u.shortUrl === shorten)?.originalUrl;
       if (url) {
+        incrementClickCount({ variables: { shortUrl: shorten } });
         const timer = setTimeout(() => {
           navigate(window.location.href = url);
         }, 5000);
